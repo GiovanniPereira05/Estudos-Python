@@ -1,6 +1,6 @@
 import json
  
-# inicializa a agenda    
+# Inicializa a agenda em uma lista  
 agenda = []
  
 # Função para carregar as informações ja existentes do json
@@ -9,7 +9,7 @@ def carregarAgenda():
         with open('agenda.json', 'r') as arquivo:
             return json.load(arquivo)  # Retorna a lista do json
     except:
-        return []  # se der algum problema retornar uma lista vazia
+        return []  # Se der algum problema retornar uma lista vazia
  
 # Função para salvar as novas informaçoes no json    
 def salvarAgenda():
@@ -22,12 +22,12 @@ def mostrarAgenda():
         for contato in agenda:
             for chave, valor in contato.items():
                 print(f"{chave}: {valor}")
-            print()  # espaço vazio para separar cada contato
+            print()  # Espaço vazio para separar cada contato
  
 def excluirContato(): # Função que exclui o contato
     nomeApagar = input("Digite o nome do contato que você quer excluir: ")
     for contato in agenda:
-        if contato["nome"].lower() == nomeApagar.lower(): # verifica se o contato tem o mesmo nome 
+        if contato["nome"].lower() == nomeApagar.lower(): # Verifica se o contato tem o mesmo nome 
             confirmacao = input("Tem certeza que deseja excluir? Digite s para confirmar")
             if confirmacao == 's' or confirmacao == 'S':
                 agenda.remove(contato)
@@ -35,7 +35,7 @@ def excluirContato(): # Função que exclui o contato
                 print("Cancelado")
     salvarAgenda()
 
-def editarContato():
+def editarContato(): # Função para editar contatos preexistentes
     nomeEditar = input("Digite o nome do contato que você deseja editar")
     for contato in agenda:
         if contato["nome"] == nomeEditar:
