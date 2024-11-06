@@ -58,16 +58,26 @@ def adicionarContato():
     nome = input("Digite o nome do contato: ")
     telefone = input("Digite o telefone do contato: ")
     email = input("Digite o email do contato: ")
- 
-    contato = {
-        "nome": nome,
-        "telefone": telefone,
-        "email": email
-    }
+    
+    for contato in agenda:
+        if nome.lower() == contato["nome"].lower():
+            print("ERRO: contato ja existente")
+            return
+        
+        if nome == "":
+            print("ERRO: É necessário colocar um nome")
+            return
+   
+            contato = {
+                "nome": nome,
+                "telefone": telefone,
+                "email": email
+            }
 
-    agenda.append(contato)  # Adiciona o contato a agenda
-    salvarAgenda()
+            agenda.append(contato)  # Adiciona o contato a agenda
+            salvarAgenda()
 
+        
 # Menu principal
 agenda = carregarAgenda()
 
